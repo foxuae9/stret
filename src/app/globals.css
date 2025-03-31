@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 30, 58, 138;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  direction: rtl;
+}
+
+@layer components {
+  .tournament-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-6 transition-all duration-300;
+  }
+  
+  .tournament-card:hover {
+    @apply bg-white/15 transform scale-105;
+  }
+  
+  .neon-text {
+    text-shadow: 
+      0 0 10px rgba(0, 243, 255, 0.7),
+      0 0 20px rgba(0, 243, 255, 0.5),
+      0 0 30px rgba(0, 243, 255, 0.3);
+  }
+}
