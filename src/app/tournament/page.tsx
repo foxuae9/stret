@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -61,7 +59,7 @@ export default function TournamentPage() {
             href="https://www.tiktok.com/@foxuae35"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-pink-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-pink-700 transition-colors text-center"
+            className="w-full sm:w-auto bg-pink-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-pink-700"
           >
             شاهد البث المباشر
           </a>
@@ -70,7 +68,7 @@ export default function TournamentPage() {
             href="https://discord.gg/sjTAX8mF"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition-colors text-center"
+            className="w-full sm:w-auto bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700"
           >
             انضم للدسكورد
           </a>
@@ -112,68 +110,40 @@ export default function TournamentPage() {
                     </div>
                     {match.winner && (
                       <div className="mt-2 text-green-400 text-center">
-                        الفائز: {match.winner.name}
+                        {match.winner?.name} فاز على {
+                          match.winner?._id === match.player1?._id ? match.player2?.name : match.player1?.name
+                        }
                       </div>
                     )}
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-white">لا توجد مباريات حالياً</p>
+              <p className="text-white">لا توجد مباريات حالية</p>
             )}
           </div>
 
+          {/* النتائج السابقة */}
           <div className="bg-white/10 rounded-lg p-6">
-            <h2 className="text-xl font-bold mb-3 text-blue-300">النتائج</h2>
+            <h2 className="text-xl font-bold mb-3 text-blue-300">النتائج السابقة</h2>
             {isLoading ? (
               <p className="text-white">جاري التحميل...</p>
-            ) : matches.some(match => match.winner) ? (
+            ) : matches.filter(match => match.winner).length > 0 ? (
               <div className="space-y-2">
                 {matches
                   .filter(match => match.winner)
                   .map((match) => (
                     <div key={match._id} className="text-white">
                       {match.winner?.name} فاز على {
-                        match.winner._id === match.player1._id ? match.player2.name : match.player1.name
+                        match.winner?._id === match.player1?._id ? match.player2?.name : match.player1?.name
                       }
                     </div>
                   ))}
               </div>
             ) : (
-              <p className="text-white">لم تنتهي أي مباراة بعد</p>
+              <p className="text-white">لا توجد نتائج سابقة</p>
             )}
           </div>
-        </div>
-
-        {/* روابط التنقل */}
-        <div className="text-center mt-8 space-x-4 rtl:space-x-reverse">
-          <a
-            href="/"
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            صفحة التسجيل
-          </a>
-          <a
-            href="https://www.foxuae35.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
-          >
-            الصفحة الرئيسية
-          </a>
-        </div>
-
-        {/* حقوق الملكية */}
-        <div className="mt-8 text-center text-gray-400 text-sm">
-          جميع الحقوق محفوظة{' '}
-          <a 
-            href="https://foxuae35.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-400 transition-colors"
-          >
-            foxuae35.com
-          </a>
         </div>
       </div>
     </main>
