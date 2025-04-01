@@ -5,6 +5,10 @@ echo "Current directory:"
 pwd
 ls -la
 
+# Remove large zip file if exists
+echo "Removing large zip file..."
+rm -f 3.zip
+
 echo "Removing old environment files..."
 rm -f .env .env.local .env.production
 
@@ -30,21 +34,18 @@ ls -la .next
 echo "Setting permissions..."
 chmod -R 775 .next
 
-echo "Setting up PM2..."
-npm install -g pm2
-
 echo "Stopping existing PM2 process..."
-pm2 stop streetfighter || true
-pm2 delete streetfighter || true
+[ -f /usr/local/bin/pm2 ] && pm2 stop streetfighter || true
+[ -f /usr/local/bin/pm2 ] && pm2 delete streetfighter || true
 
 echo "Starting application with PM2..."
-pm2 start ecosystem.config.js
+[ -f /usr/local/bin/pm2 ] && pm2 start ecosystem.config.js
 
 echo "Saving PM2 process list..."
-pm2 save
+[ -f /usr/local/bin/pm2 ] && pm2 save
 
 echo "Checking PM2 status..."
-pm2 list
+[ -f /usr/local/bin/pm2 ] && pm2 list
 
 echo "Fixing permissions..."
 chown -R runcloud:runcloud .
