@@ -1,10 +1,10 @@
 module.exports = {
   apps: [
     {
-      name: 'streetfighter',
-      script: 'npm',
-      args: 'start',
-      cwd: '/home/runcloud/webapps/StreetFighter',
+      name: "streetfighter",
+      script: "node_modules/next/dist/bin/next",
+      args: "start",
+      cwd: "/home/runcloud/webapps/StreetFighter",
       instances: 1,
       autorestart: true,
       watch: false,

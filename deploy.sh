@@ -34,23 +34,8 @@ ls -la .next
 echo "Setting permissions..."
 chmod -R 775 .next
 
-echo "Stopping existing PM2 process..."
-[ -f /usr/local/bin/pm2 ] && pm2 stop streetfighter || true
-[ -f /usr/local/bin/pm2 ] && pm2 delete streetfighter || true
-
-echo "Starting application with PM2..."
-[ -f /usr/local/bin/pm2 ] && pm2 start ecosystem.config.js
-
-echo "Saving PM2 process list..."
-[ -f /usr/local/bin/pm2 ] && pm2 save
-
-echo "Checking PM2 status..."
-[ -f /usr/local/bin/pm2 ] && pm2 list
+echo "Restarting application with PM2..."
+pm2 restart ecosystem.config.js || pm2 start ecosystem.config.js
 
 echo "Fixing permissions..."
 chown -R runcloud:runcloud .
-
-echo "Restarting NGINX..."
-sudo service nginx restart
-
-echo "Deployment completed!"
