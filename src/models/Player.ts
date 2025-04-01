@@ -9,7 +9,7 @@ const playerSchema = new mongoose.Schema({
   position: {
     type: Number,
     required: true,
-    unique: true,
+    index: true, // نستخدم index هنا بدلاً من unique لأننا نريد فهرس فقط
   },
   isActive: {
     type: Boolean,
@@ -20,9 +20,6 @@ const playerSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
-// إضافة فهرس للموقع للترتيب السريع
-playerSchema.index({ position: 1 });
 
 // تصدير النموذج
 export const Player = mongoose.models.Player || mongoose.model('Player', playerSchema);
