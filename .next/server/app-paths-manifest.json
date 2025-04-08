@@ -1,14 +1,14 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/api/admin/route": "app/api/admin/route.js",
   "/admin/login/page": "app/admin/login/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/api/players/[id]/route": "app/api/players/[id]/route.js",
   "/api/matches/route": "app/api/matches/route.js",
+  "/api/players/[id]/route": "app/api/players/[id]/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/admin/route": "app/api/admin/route.js",
+  "/api/players/route": "app/api/players/route.js",
   "/api/players/count/route": "app/api/players/count/route.js",
   "/api/settings/route": "app/api/settings/route.js",
-  "/api/players/route": "app/api/players/route.js",
   "/api/tournament/route": "app/api/tournament/route.js",
-  "/tournament/page": "app/tournament/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/tournament/page": "app/tournament/page.js"
 }
