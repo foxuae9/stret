@@ -24,7 +24,7 @@ export async function PUT(request: Request) {
     });
     
     for (const player of players) {
-      const matchup = player.matchups.find(m => m._id.toString() === matchId);
+      const matchup = player.matchups.find((m: any) => m._id.toString() === matchId);
       if (matchup) {
         matchup.winner = winnerId;
         await player.save();
