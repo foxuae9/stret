@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "production": "npm install && npm run build && pm2 restart fighter"
+    "clean": "rm -rf node_modules .next",
+    "production": "npm run clean && npm install --force && npm run build && pm2 restart fighter"
   },
   "repository": {
     "type": "git",
